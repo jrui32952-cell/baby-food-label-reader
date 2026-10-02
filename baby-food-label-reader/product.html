@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product · Baby Food Label Reader</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="wordmark" href="index.html">Baby Food Label Reader</a></header>
+  <main class="page product-page">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Search products</a><span aria-hidden="true">›</span><span>Product record</span></nav>
+    <p id="status" class="status" role="status" aria-live="polite">Loading product information…</p>
+    <article id="result" hidden>
+      <div class="product-layout">
+        <div id="image-container" class="image-container"><span>Product image unavailable</span></div>
+        <div class="product-details">
+          <p class="eyebrow">Product record · Open Food Facts</p>
+          <h1 id="product-name"></h1>
+          <dl class="metadata">
+            <div><dt>Brand</dt><dd id="brand"></dd></div>
+            <div><dt>Quantity</dt><dd id="quantity"></dd></div>
+            <div><dt>Barcode</dt><dd id="product-code"></dd></div>
+          </dl>
+          <section class="detail-section" aria-labelledby="ingredients-heading">
+            <h2 id="ingredients-heading">Original ingredient text</h2>
+            <p class="source">Recorded by Open Food Facts. Shown without rewriting.</p>
+            <p id="ingredients" class="ingredient-text" tabindex="-1"></p>
+            <button id="clear-highlight" class="text-button" type="button" hidden>Clear highlight</button>
+            <p id="highlight-status" class="source" role="status" aria-live="polite"></p>
+          </section>
+          <section class="detail-section" aria-labelledby="allergen-heading">
+            <h2 id="allergen-heading">Recorded allergen information</h2>
+            <p class="source">Tags in the Open Food Facts record; verify against the package.</p>
+            <div id="allergens" class="tags"></div>
+          </section>
+          <section class="detail-section explanation-section" aria-labelledby="explanation-heading">
+            <p class="eyebrow">Written by this website</p>
+            <h2 id="explanation-heading">Ingredient reading help</h2>
+            <p class="source">Notes on selected terms found in the recorded text. These are explanations, not statements printed on the package.</p>
+            <div id="explanations" class="explanations"></div>
+          </section>
+          <section class="detail-section" aria-labelledby="nutrition-heading">
+            <h2 id="nutrition-heading">Key nutrition facts</h2>
+            <p class="source">Per 100 g, when recorded by Open Food Facts.</p>
+            <dl id="nutrition" class="nutrition"></dl>
+            <p id="nutrition-warning" class="nutrition-warning" hidden></p>
+          </section>
+          <p class="record-link"><a id="source-link" href="https://world.openfoodfacts.org/" target="_blank" rel="noopener noreferrer">View original Open Food Facts record ↗</a></p>
+        </div>
+      </div>
+    </article>
+    <p class="footnote">Records can be incomplete or outdated. Check the physical package before making food decisions.</p>
+  </main>
+  <dialog id="image-dialog" class="image-dialog" aria-labelledby="image-dialog-title" aria-describedby="image-resolution-note">
+    <div class="dialog-header"><h2 id="image-dialog-title">Product packaging</h2><button id="close-image" type="button" autofocus aria-label="Close enlarged image">Close ×</button></div>
+    <div id="enlarged-image-container" class="enlarged-image-container"></div>
+    <p id="image-resolution-note" class="source">Image from Open Food Facts. Detail depends on the original image resolution.</p>
+  </dialog>
+</body>
+</html>
