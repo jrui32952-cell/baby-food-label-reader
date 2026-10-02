@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baby Food Label Reader</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header"><a class="wordmark" href="index.html">Baby Food Label Reader</a></header>
+  <main class="home page">
+    <p class="eyebrow">A closer look at a food label</p>
+    <h1>What does the label say?</h1>
+    <p class="intro">Enter a baby food barcode to see its recorded ingredients and a few plain-language notes about selected words.</p>
+    <form id="search-form" class="search" action="product.html" method="get">
+      <label for="barcode">Product barcode</label>
+      <div class="search-row">
+        <input id="barcode" name="barcode" inputmode="numeric" pattern="[0-9]{8,14}" maxlength="14" placeholder="Enter barcode" required>
+        <button type="submit">View product</button>
+      </div>
+      <p class="example"><a class="example-link" href="product.html?barcode=0015000047306">Try an example: Gerber Strawberry <span aria-hidden="true">→</span></a></p>
+    </form>
+    <p class="home-note">Product data comes from Open Food Facts. Always check the package for current information.</p>
+  </main>
+</body>
+</html>
