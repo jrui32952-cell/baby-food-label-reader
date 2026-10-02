@@ -64,8 +64,8 @@ button:hover { background: #eaa550; }
 .record-link { margin-top: 28px; }
 .footnote { font-size: .86rem; color: #56717a; margin-top: 60px; }
 @media (max-width: 760px) {
-  .product-layout { grid-template-columns: 1fr; gap: 25px; }
-  .image-container { min-height: 320px; aspect-ratio: 1.4; padding: 24px; }
+  .product-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .image-container { min-height: 0; aspect-ratio: auto; padding: 24px; }
   .search-row { flex-direction: column; }
   .home { min-height: auto; padding: 100px 0; }
   .home::before { width: 94px; height: 94px; right: 0; top: 28px; }
@@ -107,3 +107,27 @@ button:hover { background: #eaa550; }
 @media (max-width: 760px) { .image-trigger img { max-height: 300px; } .image-dialog { padding: 16px; } }
 
 .nutrition-warning { background: #fff0e5; border-left: 3px solid #f3b866; padding: 14px 18px; line-height: 1.6; font-size: .9rem; }
+
+/* Allow intrinsic image/text sizes to shrink inside the grid, including iOS. */
+.product-layout > *, .product-details, .image-container, .image-trigger { min-width: 0; }
+.product-details, .metadata dd, .nutrition dd, .record-link, .footnote { overflow-wrap: anywhere; }
+.image-trigger { height: auto; }
+.image-trigger img { display: block; width: auto; height: auto; max-width: 100%; }
+.breadcrumb { flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .page { width: calc(100% - 40px); }
+  .site-header { padding: 18px 20px; }
+  .product-page { padding-top: 24px; }
+  .image-container { display: block; }
+  .image-trigger { gap: 16px; }
+  .image-trigger img { max-height: 280px; max-width: 100%; object-fit: contain; }
+  .image-hint { display: block; line-height: 1.5; }
+  .product-details h1 { font-size: clamp(2rem, 8vw, 2.6rem); }
+  .metadata div { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 12px; }
+  .metadata dt { min-width: 0; }
+  .detail-section { padding-top: 24px; padding-bottom: 24px; }
+  .explanation-section { padding: 24px 16px; margin: 8px 0 0; }
+  .nutrition div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .nutrition dd { text-align: right; }
+  .dialog-header { flex-wrap: wrap; }
+}

@@ -47,3 +47,27 @@ Unmatched ingredient lists now say: “This website does not yet explain any ter
 Energy check compares explicit energy-kcal_100g × 4.184 with energy-kj_100g. It flags differences greater than both 5 kJ and 10% of the larger value to tolerate rounding. Missing, invalid or negative values skip this comparison; the absence of a warning does not verify the record. Both source values remain unchanged. The user-provided Puffs response (0 kcal vs 102 kJ per 100 g) reproduces a source inconsistency and triggers the notice. No guessed replacement value is displayed.
 
 User confirmed image modal Escape and Close button work. Live browser testing of new glossary terms and energy notice remains to be completed.
+
+## 部署问题案例 — 2026-10-02
+
+**问题：**源码上传到 GitHub 后，公开网站还不能访问。上传完成与网站发布完成被误认为同一步。
+
+**已确认的初始配置：**Pages 的 Source 为 GitHub Actions，页面仍展示 Static HTML / Jekyll 的 Configure 入口，没有显示已部署网站。现有截图没有证明工作流已配置或成功运行，因此不能把首次无法访问归因为 HTML/JS 代码错误。
+
+**处理：**改为 Deploy from a branch，选择 main 与 / (root)，保存。之后截图出现 GitHub Pages source saved，并显示从 main 分支构建的配置。
+
+**尚未确认：**当时仍无部署成功提示。尚未查看 Actions 的实际运行结果；不能断定构建失败，也不能断定只是等待。需要检查 pages build and deployment 的状态与日志。若成功后首页仍404，再核对 index.html 是否位于发布目录根部。
+
+**反思：**我学会区分源码上传、发布来源配置、构建与部署、公开链接验证这几个环节。排查时应先看部署状态和错误日志，而不是反复改代码。最终结果待实际访问网站后补记。
+
+**证据：**image(20261002-064312).png（初始 GitHub Actions 来源）；image(20261002-064446).png（已保存 main / root 配置）。
+
+### 部署案例结案 — 2026-10-02
+后续 Actions 截图 image(20261002-064659).png 显示最新 pages build and deployment 成功，但公开首页仍404。仓库截图 image(20261002-064755).png 确认根目录只有 baby-food-label-reader 子文件夹，首页文件在该文件夹内；发布来源却选择仓库根目录，导致根网址找不到 index.html。这是文件路径与发布目录不匹配，不是API或网页JavaScript故障。
+
+处理建议是把 index.html、product.html、style.css、script.js 放到发布根目录。用户随后确认此诊断正确、网站成功打开，并提供 image(20261002-065101).png 显示正常首页。最后实际采取的是移动文件还是访问子目录，截图未展示地址栏/更新后的文件列表，暂不把具体操作写成已证实事实。
+
+结果：用户确认网站可访问，首页截图正常；上线后的产品API查询和交互仍应单独测试。学习：绿色部署成功只说明发布流程完成，不保证所访问的URL对应有效首页；需要核对发布目录、入口文件与URL路径。
+
+## Mobile repair — 2026-10-02
+Removed constrained mobile image aspect ratio, allowed grid children to shrink, contained image and hint in natural flow, wrapped metadata and long text. Pink/yellow/blue style retained. Actual phone and 320/390/430px verification pending. See PROCESS-DRAFT.md and USE-CASE.svg for project evidence draft.
